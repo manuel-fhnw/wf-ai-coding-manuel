@@ -1,32 +1,1117 @@
-/* style.css – das Aussehen der Seite */
+/* style.css – das Aussehen von Campus Idle */
+
+:root {
+  --hintergrund: #f4f1ea;
+  --karte: #fffdf8;
+  --karte-hell: #f8f6f0;
+  --dunkel: #24313a;
+  --studium-hintergrund: #24313a;
+  --grau: #6e7a80;
+  --blau: #3c6e71;
+  --blau-hell: #dcebea;
+  --gelb: #e8ad42;
+  --gruen: #49765a;
+  --rand: #e2ddd2;
+  --schatten: 0 10px 24px rgba(36, 49, 58, 0.08);
+}
+
+body.darkmodus {
+  --hintergrund: #1d2428;
+  --karte: #273238;
+  --karte-hell: #313e44;
+  --dunkel: #eef4f3;
+  --studium-hintergrund: #151b1e;
+  --grau: #b6c3c4;
+  --blau: #8bc7c3;
+  --blau-hell: #304d50;
+  --gelb: #edbd58;
+  --gruen: #86bd95;
+  --rand: #46545a;
+  --schatten: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f5f5f5;
-  color: #1a1a1a;
+  background: var(--hintergrund);
+  color: var(--dunkel);
   margin: 0;
 }
 
-main {
-  max-width: 640px;
-  margin: 48px auto;
-  padding: 24px;
-  background-color: white;
+button {
+  font: inherit;
+}
+
+.start-overlay {
+  align-items: center;
+  background: rgba(36, 49, 58, 0.88);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  overflow: auto;
+  padding: 28px;
+  position: fixed;
+  z-index: 10;
+}
+
+.start-overlay[hidden] {
+  display: none;
+}
+
+.startfenster {
+  background: var(--karte);
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+  max-width: 1050px;
+  padding: 34px;
+  width: 100%;
+}
+
+.startfenster h1 {
+  margin-bottom: 8px;
+}
+
+.start-intro {
+  color: var(--grau);
+  margin-bottom: 22px;
+}
+
+.budget-anzeige,
+.willkommens-summen {
+  align-items: center;
+  background: var(--blau-hell);
+  border-radius: 12px;
+  color: var(--blau);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 14px 18px;
+}
+
+.budget-anzeige strong,
+.willkommens-summen strong {
+  font-size: 1.3rem;
+}
+
+.willkommens-summen {
+  gap: 12px;
+}
+
+.willkommens-summen > div {
+  flex: 1;
+}
+
+.willkommens-summen span,
+.willkommens-summen strong {
+  display: block;
+}
+
+.willkommens-summen span {
+  font-size: 0.8rem;
+}
+
+.willkommens-summen strong {
+  margin-top: 4px;
+}
+
+.willkommens-kategorien {
+  display: grid;
+  gap: 16px;
+}
+
+.willkommens-kategorie {
+  border-top: 1px solid var(--rand);
+  padding-top: 16px;
+}
+
+.willkommens-kategorie h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.willkommens-stufen {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.willkommens-stufe {
+  background: var(--karte-hell);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  color: var(--dunkel);
+  cursor: pointer;
+  display: grid;
+  gap: 5px;
+  min-height: 92px;
+  padding: 10px;
+  text-align: left;
+}
+
+.willkommens-stufe:hover {
+  border-color: var(--blau);
+}
+
+.willkommens-stufe:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.willkommens-stufe.gesperrt {
+  filter: grayscale(0.35);
+}
+
+.willkommens-stufe.gewaehlt {
+  border-color: var(--blau);
+  box-shadow: 0 0 0 2px var(--blau-hell);
+}
+
+.willkommens-stufe.tiefer {
+  background: var(--blau-hell);
+}
+
+.willkommens-stufe span {
+  color: var(--grau);
+  font-size: 0.82rem;
+  line-height: 1.25;
+}
+
+.willkommens-stufe em {
+  color: var(--blau);
+  font-size: 0.75rem;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+.willkommens-stufe small {
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+.willkommens-stufe s {
+  color: var(--grau);
+  margin-right: 4px;
+}
+
+.budget-ueberschritten {
+  color: #b44d4d;
+}
+
+.auswahl-gruppe + .auswahl-gruppe {
+  margin-top: 24px;
+}
+
+.auswahl-gruppe h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.auswahl-karten {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.auswahl-karte {
+  background: var(--karte-hell);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  color: var(--dunkel);
+  cursor: pointer;
+  display: grid;
+  gap: 7px;
+  padding: 15px;
+  text-align: left;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.auswahl-karte:hover {
+  border-color: var(--blau);
+  transform: translateY(-2px);
+}
+
+.auswahl-karte.ausgewaehlt {
+  background: var(--blau-hell);
+  border-color: var(--blau);
+}
+
+.auswahl-symbol {
+  font-size: 1.8rem;
+}
+
+.auswahl-karte span:last-child {
+  color: var(--grau);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.sparbonus {
+  color: var(--gruen);
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 24px 0 14px;
+  text-align: center;
+}
+
+.start-knopf {
+  background: var(--blau);
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 13px 24px;
+}
+
+.start-knopf:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.start-knopf:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.planung-overlay {
+  align-items: center;
+  background: rgba(36, 49, 58, 0.88);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  overflow: auto;
+  padding: 28px;
+  position: fixed;
+  z-index: 9;
+}
+
+.planung-overlay[hidden] {
+  display: none;
+}
+
+.planungfenster {
+  background: var(--karte);
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+  max-width: 1050px;
+  padding: 30px;
+  width: 100%;
+}
+
+.planung-kopf,
+.planung-summen,
+.planung-aktionen,
+.planung-geld {
+  align-items: center;
+  display: flex;
+}
+
+.planung-kopf,
+.planung-aktionen {
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.planung-geld {
+  background: var(--blau-hell);
+  border-radius: 10px;
+  color: var(--blau);
+  flex-direction: column;
+  padding: 10px 14px;
+}
+
+.planung-geld span {
+  font-size: 0.8rem;
+}
+
+.planung-geld strong {
+  font-size: 1.2rem;
+  margin-top: 3px;
+}
+
+#planung-hinweis {
+  color: var(--grau);
+  margin: 20px 0 14px;
+}
+
+.fach-karten {
+  display: grid;
+  gap: 9px;
+  grid-template-columns: repeat(2, 1fr);
+  max-height: 48vh;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.fach-karte {
+  background: var(--karte-hell);
+  border: 2px solid transparent;
+  border-radius: 11px;
+  color: var(--dunkel);
+  cursor: pointer;
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  text-align: left;
+}
+
+.fach-karte:hover:not(:disabled) {
+  border-color: var(--blau);
+}
+
+.fach-karte.gewaehlt {
+  background: var(--blau-hell);
+  border-color: var(--blau);
+}
+
+.fach-karte:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.fach-karte small {
+  color: var(--grau);
+}
+
+.fach-typ {
+  color: var(--blau);
+  font-size: 0.72rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.planung-summen {
+  border-top: 1px solid var(--rand);
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 16px;
+}
+
+.planung-summen span {
+  color: var(--grau);
+  font-size: 0.85rem;
+}
+
+.planung-summen strong {
+  color: var(--dunkel);
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 3px;
+}
+
+.planung-fehlermeldung {
+  color: #b44d4d;
+  font-size: 0.9rem;
+  font-weight: bold;
+  min-height: 1.2em;
+  margin: 14px 0 0;
+}
+
+.jobben-planung-knopf {
+  background: var(--gruen);
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 13px 18px;
+}
+
+.jobben-planung-knopf:hover {
+  filter: brightness(0.95);
+}
+
+.spiel {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 44px 28px 32px;
+}
+
+.kopf {
+  order: 1;
+}
+
+.studium-bereich {
+  order: 2;
+}
+
+.shop {
+  order: 3;
+}
+
+.raum-bereich {
+  order: 4;
+}
+
+.spiel-footer {
+  order: 5;
+}
+
+.kopf,
+.abschnitt-kopf,
+.studium-kopf,
+.status,
+.zaehler,
+.shop-artikel {
+  display: flex;
+  align-items: center;
+}
+
+.kopf,
+.abschnitt-kopf,
+.studium-kopf {
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.kopf-aktionen {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.darkmode-knopf {
+  align-self: flex-end;
+  background: transparent;
+  border: 1px solid var(--rand);
+  border-radius: 8px;
+  color: var(--dunkel);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 8px 12px;
+}
+
+.darkmode-knopf:hover {
+  border-color: var(--blau);
+  color: var(--blau);
+}
+
+.kleiner-text,
+.zaehler-label {
+  color: var(--blau);
+  font-size: 0.76rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  margin: 0 0 7px;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
 }
 
 h1 {
-  margin-top: 0;
-  color: blue;
+  font-size: clamp(2.2rem, 5vw, 3.7rem);
+  letter-spacing: -0.05em;
+  margin-bottom: 8px;
 }
 
-button {
-  font-size: 1rem;
-  padding: 8px 16px;
-  border: none;
-  background-color: #ffd500;
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-bottom: 8px;
+}
+
+.untertitel {
+  color: var(--grau);
+  margin-bottom: 0;
+}
+
+.studium-bereich {
+  background: var(--studium-hintergrund);
+  border-radius: 18px;
+  color: white;
+  margin-top: 32px;
+  padding: 24px 26px;
+}
+
+.studium-bereich .kleiner-text {
+  color: #a9d0ce;
+}
+
+.studium-bereich h2 {
+  color: white;
+}
+
+.pruefungsziel {
+  text-align: right;
+}
+
+.pruefungsziel span,
+.fortschritt-info {
+  color: #b7c2c2;
+  font-size: 0.85rem;
+}
+
+.pruefungsziel strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 4px;
+}
+
+.fortschritt-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.fortschritt-info strong {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.fortschrittsbalken {
+  background: #45535a;
+  border-radius: 20px;
+  height: 12px;
+  margin-top: 9px;
+  overflow: hidden;
+}
+
+.fortschritt {
+  background: var(--gelb);
+  border-radius: inherit;
+  height: 100%;
+  transition: width 0.3s ease;
+  width: 0;
+}
+
+.pruefungs-meldung {
+  color: #f5ce7e;
+  font-size: 0.9rem;
+  font-weight: bold;
+  min-height: 1.2em;
+  margin: 14px 0 0;
+}
+
+.status {
+  gap: 12px;
+}
+
+.zaehler {
+  background: var(--karte);
+  border: 1px solid var(--rand);
+  border-radius: 14px;
+  gap: 10px;
+  min-width: 132px;
+  padding: 12px 15px;
+}
+
+.zaehler-symbol {
+  font-size: 1.5rem;
+}
+
+.zaehler-label {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.zaehler strong {
+  font-size: 1.25rem;
+}
+
+.aktion-bereich {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+  margin: 42px 0;
+}
+
+.aktions-knopf {
+  border: 0;
+  border-radius: 18px;
+  color: white;
   cursor: pointer;
+  display: grid;
+  gap: 5px;
+  min-height: 150px;
+  padding: 24px;
+  text-align: left;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-button:hover {
-  background-color: #e6c000;
+.aktions-knopf:hover {
+  box-shadow: var(--schatten);
+  transform: translateY(-3px);
+}
+
+.aktions-knopf:active {
+  transform: translateY(1px);
+}
+
+.lernen {
+  background: var(--blau);
+}
+
+.jobben {
+  background: var(--gruen);
+}
+
+.aktions-symbol {
+  font-size: 2rem;
+}
+
+.aktions-knopf span:not(.aktions-symbol) {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.aktions-knopf small {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.raum-bereich,
+.shop {
+  background: var(--karte);
+  border: 1px solid var(--rand);
+  border-radius: 18px;
+  box-shadow: var(--schatten);
+  padding: 26px;
+}
+
+.shop {
+  margin-top: 24px;
+}
+
+.shop-tabs {
+  border-bottom: 1px solid var(--rand);
+  display: flex;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.shop-tab {
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: var(--grau);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 11px 16px;
+}
+
+.shop-tab.aktiv {
+  border-bottom-color: var(--blau);
+  color: var(--blau);
+}
+
+.shop-panel {
+  padding-top: 8px;
+}
+
+.ausruestungs-karten {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.ausruestungs-karte {
+  background: var(--karte-hell);
+  border: 1px solid var(--rand);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.ausruestungs-kopf {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.ausruestungs-kopf .artikel-symbol {
+  flex-shrink: 0;
+}
+
+.ausruestungs-kopf h3 {
+  margin-bottom: 0;
+}
+
+.ausruestungs-stufe {
+  color: var(--grau);
+  font-size: 0.85rem;
+  margin: 14px 0 8px;
+}
+
+.stufenbalken {
+  display: flex;
+  gap: 5px;
+}
+
+.stufen-segment {
+  background: var(--rand);
+  border-radius: 4px;
+  height: 8px;
+  flex: 1;
+}
+
+.stufen-segment.gefuellt {
+  background: var(--blau);
+}
+
+.ausruestungs-karte .artikel-info {
+  margin-top: 14px;
+  min-height: 62px;
+}
+
+.ausruestungs-karte .kaufen-knopf {
+  margin-top: 14px;
+  width: 100%;
+}
+
+.shop-panel .shop-artikel {
+  border-bottom: 1px solid var(--rand);
+  padding: 14px 0;
+}
+
+.shop-panel .shop-artikel:last-of-type {
+  border-bottom: 0;
+}
+
+.boost-countdown {
+  color: var(--gruen);
+  font-size: 0.9rem;
+  font-weight: bold;
+  min-height: 1.2em;
+  margin: 14px 0 0;
+}
+
+.bibliothek-artikel {
+  border-top: 1px solid var(--rand);
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.passiv-text {
+  background: var(--blau-hell);
+  border-radius: 20px;
+  color: var(--blau);
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding: 9px 13px;
+}
+
+.raum-tabs {
+  border-bottom: 1px solid var(--rand);
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.raum-tabs[hidden] {
+  display: none;
+}
+
+.raum-tab {
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: var(--grau);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 12px 16px;
+}
+
+.raum-tab.aktiv {
+  border-bottom-color: var(--blau);
+  color: var(--blau);
+}
+
+.raum-tab.gesperrt {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.raum-karten {
+  padding-top: 22px;
+}
+
+.raum-karte {
+  align-items: center;
+  background: var(--karte-hell);
+  border-radius: 14px;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.raum-bild {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 3rem;
+  height: 110px;
+  justify-content: center;
+  width: 140px;
+}
+
+.darkmodus .wg-bild {
+  background: #39443f;
+}
+
+.darkmodus .bibliothek-bild {
+  background: #35494a;
+}
+
+.darkmodus .artikel-symbol {
+  background: #51452f;
+}
+
+.wg-bild {
+  background: #e8dfcb;
+}
+
+.bibliothek-bild {
+  background: #d9e7e2;
+}
+
+.raum-info {
+  flex: 1;
+  color: var(--grau);
+}
+
+.raum-info h3 {
+  color: var(--dunkel);
+}
+
+.raum-info p {
+  line-height: 1.5;
+}
+
+.ertrag {
+  color: var(--gruen);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.raum-kaufen {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.shop-artikel {
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.artikel-symbol {
+  background: #f1e7cf;
+  border-radius: 12px;
+  font-size: 2rem;
+  padding: 14px;
+}
+
+.artikel-info {
+  flex: 1;
+}
+
+.artikel-info p {
+  color: var(--grau);
+  margin-bottom: 0;
+}
+
+.kaufen-knopf {
+  background: var(--gelb);
+  border: 0;
+  border-radius: 10px;
+  color: var(--dunkel);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 12px 18px;
+}
+
+.kaufen-knopf:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.kaufen-knopf:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.meldung {
+  color: var(--gruen);
+  font-size: 0.9rem;
+  font-weight: bold;
+  min-height: 1.2em;
+  margin: 16px 0 0;
+}
+
+.spiel-footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.speicher-hinweis {
+  color: var(--grau);
+  font-size: 0.85rem;
+  margin: 0;
+  text-align: center;
+}
+
+.reset-knopf {
+  background: transparent;
+  border: 1px solid var(--rand);
+  border-radius: 8px;
+  color: var(--grau);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+}
+
+.reset-knopf:hover {
+  border-color: var(--grau);
+  color: var(--dunkel);
+}
+
+@media (max-width: 700px) {
+  .start-overlay {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .startfenster {
+    padding: 24px 18px;
+  }
+
+  .planung-overlay {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .planungfenster {
+    padding: 24px 18px;
+  }
+
+  .planung-kopf {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .auswahl-karten {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fach-karten {
+    grid-template-columns: 1fr;
+  }
+
+  .kopf,
+  .abschnitt-kopf,
+  .studium-kopf {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pruefungsziel {
+    text-align: left;
+  }
+
+  .spiel-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .status {
+    width: 100%;
+  }
+
+  .zaehler {
+    flex: 1;
+  }
+
+  .raum-karte {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .raum-bild {
+    height: 90px;
+    width: 100%;
+  }
+
+  .raum-tabs {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 500px) {
+  .budget-anzeige {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .willkommens-summen {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .willkommens-stufen {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .auswahl-karten {
+    grid-template-columns: 1fr;
+  }
+
+  .planung-summen {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .planung-aktionen {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .spiel {
+    padding: 28px 16px;
+  }
+
+  .aktion-bereich {
+    grid-template-columns: 1fr;
+    margin: 28px 0;
+  }
+
+  .aktion-bereich .aktions-knopf {
+    min-height: 125px;
+  }
+
+  .raum-bereich,
+  .shop {
+    padding: 20px;
+  }
+
+  .shop-artikel {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .ausruestungs-karten {
+    grid-template-columns: 1fr;
+  }
+
+  .artikel-info {
+    min-width: calc(100% - 78px);
+  }
 }
