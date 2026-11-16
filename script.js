@@ -125,9 +125,9 @@ const darkmodeKnopf = document.getElementById("darkmode-knopf");
 
 const semesterDauer = 300;
 const boostDaten = {
-  kaffee: { name: "Kaffee", preis: 20, dauer: 60, multiplikator: 2 },
-  clubMate: { name: "Club-Mate", preis: 50, dauer: 120, multiplikator: 5 },
-  energyDrink: { name: "Energy Drink", preis: 100, dauer: 180, multiplikator: 10 }
+  kaffee: { name: "Kaffee", preis: 25, dauer: 20, multiplikator: 1.5 },
+  clubMate: { name: "Club-Mate", preis: 50, dauer: 30, multiplikator: 3 },
+  energyDrink: { name: "Energy Drink", preis: 100, dauer: 60, multiplikator: 5 }
 };
 const ausruestungsDaten = {
   pc: {
@@ -182,103 +182,90 @@ const semesterGebuehr = 1000;
 const wiederholungsGebuehr = 500;
 const faecherProSemester = [
   [
-    { name: "Mathematik I", pflicht: true, wissen: 180, ects: 8 },
-    { name: "Informatik Grundlagen", pflicht: true, wissen: 140, ects: 4 },
-    { name: "Statistik I und Vektorgeometrie", wissen: 120, ects: 3 },
-    { name: "Aufnahme und Analyse von Geodaten", wissen: 160, ects: 5 },
-    { name: "Einführung in die Datenmodellierung", wissen: 130, ects: 3 },
-    { name: "Kommunikation, Umwelt und Nachhaltigkeit", wissen: 80, ects: 4 },
-    { name: "Englisch I", wissen: 70, ects: 3 },
-    { name: "Selbststudium und Projektarbeit", wissen: 60, ects: 3 },
-    { name: "Grundlagen der Geodäsie", wissen: 110, ects: 2 },
-    { name: "Kartografie und Kartenentwurf", wissen: 100, ects: 2 },
-    { name: "Vermessungskunde", wissen: 130, ects: 2 },
-    { name: "Wissenschaftliches Arbeiten", wissen: 90, ects: 2 }
+    { name: "Musterlogik", wahlpflicht: true, wissen: 180, ects: 8 },
+    { name: "Digitale Welten", wahlpflicht: true, wissen: 140, ects: 4 },
+    { name: "Zahlen und Zufall", wahlpflicht: true, wissen: 120, ects: 3 },
+    { name: "Ideenwerkstatt", wahlpflicht: true, wissen: 160, ects: 5 },
+    { name: "Datenfantasie", wahlpflicht: true, wissen: 130, ects: 3 },
+    { name: "Team und Gesellschaft", wahlpflicht: true, wissen: 80, ects: 4 },
+    { name: "Sprachlabor", wahlfach: true, wissen: 70, ects: 3 },
+    { name: "Projektatelier", wahlfach: true, wissen: 60, ects: 3 },
+    { name: "Kreatives Denken", wahlfach: true, wissen: 110, ects: 2 },
+    { name: "Medien und Wirkung", wahlfach: true, wissen: 100, ects: 2 },
+    { name: "Alltagsforschung", wahlfach: true, wissen: 130, ects: 2 },
+    { name: "Lernmethoden", wahlfach: true, wissen: 90, ects: 2 }
   ],
   [
-    { name: "Mathematik II", pflicht: true, wissen: 220, ects: 8 },
-    { name: "Geografische Informationssysteme", pflicht: true, wissen: 190, ects: 3 },
-    { name: "Statistik II", wissen: 180, ects: 3 },
-    { name: "Berührungslose Messsysteme", wissen: 260, ects: 6 },
-    { name: "Geoprogrammierung I", wissen: 230, ects: 3 },
-    { name: "Geovisualisierung", wissen: 150, ects: 2 },
-    { name: "Wahlmodul HABG", wissen: 100, ects: 1 },
-    { name: "Englisch II", wissen: 90, ects: 3 },
-    { name: "Datenbanken für Geodaten", wissen: 210, ects: 2 },
-    { name: "Landmanagement", wissen: 170, ects: 2 },
-    { name: "Ausgleichungsrechnung", wissen: 240, ects: 2 },
-    { name: "Thematische Kartografie", wissen: 140, ects: 2 }
+    { name: "Logik der Systeme", wahlpflicht: true, wissen: 220, ects: 8 },
+    { name: "Verborgene Muster", wahlpflicht: true, wissen: 190, ects: 3 },
+    { name: "Statistik der Möglichkeiten", wahlpflicht: true, wissen: 180, ects: 3 },
+    { name: "Klang und Struktur", wahlpflicht: true, wissen: 260, ects: 6 },
+    { name: "Programmierte Ideen", wahlpflicht: true, wissen: 230, ects: 3 },
+    { name: "Bilder und Bedeutung", wahlpflicht: true, wissen: 150, ects: 2 },
+    { name: "Fremde Sprachen", wahlfach: true, wissen: 90, ects: 3 },
+    { name: "Datenküche", wahlfach: true, wissen: 210, ects: 2 },
+    { name: "Räume im Kopf", wahlfach: true, wissen: 170, ects: 2 },
+    { name: "Entscheidungen und Folgen", wahlfach: true, wissen: 240, ects: 2 },
+    { name: "Farben der Zukunft", wahlfach: true, wissen: 140, ects: 2 },
+    { name: "Offenes Projekt II", wahlfach: true, wissen: 120, ects: 1 }
   ],
   [
-    { name: "Mathematik III", pflicht: true, wissen: 280, ects: 4 },
-    { name: "Räumliche Datenverwaltung und Datenanalyse", pflicht: true, wissen: 330, ects: 7 },
-    { name: "Physik", wissen: 220, ects: 3 },
-    { name: "3D-Datenerfassung", wissen: 260, ects: 3 },
-    { name: "Webprogrammierung und interaktive Datenvisualisierung", wissen: 300, ects: 5 },
-    { name: "Grundzüge VDC", wissen: 180, ects: 2 },
-    { name: "Feldkurs Vermessung", wissen: 250, ects: 5 },
-    { name: "Wahlmodul HABG", wissen: 120, ects: 1 },
-    { name: "Englisch III", wissen: 100, ects: 3 },
-    { name: "Laserscanning und Punktwolken", wissen: 290, ects: 5 },
-    { name: "Geodatenqualität und Metadaten", wissen: 200, ects: 2 },
-    { name: "Bauvermessung", wissen: 240, ects: 2 }
+    { name: "Komplexe Muster", wahlpflicht: true, wissen: 280, ects: 4 },
+    { name: "Datenströme und Deutung", wahlpflicht: true, wissen: 330, ects: 7 },
+    { name: "Kräfte im Alltag", wahlpflicht: true, wissen: 220, ects: 3 },
+    { name: "Dreidimensionale Ideen", wahlpflicht: true, wissen: 260, ects: 3 },
+    { name: "Interaktive Geschichten", wahlpflicht: true, wissen: 300, ects: 5 },
+    { name: "Zukunft und Verantwortung", wahlpflicht: true, wissen: 180, ects: 2 },
+    { name: "Praktische Experimente", wahlfach: true, wissen: 250, ects: 5 },
+    { name: "Freies Forschungsfeld", wahlfach: true, wissen: 120, ects: 1 },
+    { name: "Sprache und Kultur III", wahlfach: true, wissen: 100, ects: 3 },
+    { name: "Licht und Bewegung", wahlfach: true, wissen: 290, ects: 5 },
+    { name: "Qualität von Wissen", wahlfach: true, wissen: 200, ects: 2 },
+    { name: "Bauen mit Gedanken", wahlfach: true, wissen: 240, ects: 2 }
   ],
   [
-    { name: "Globale Positionierung", pflicht: true, wissen: 360, ects: 5 },
-    { name: "Photogrammetrie und Computer Vision", pflicht: true, wissen: 380, ects: 4 },
-    { name: "Recht und Digitalisierung", wissen: 180, ects: 2 },
-    { name: "3D-Modellierung", wissen: 270, ects: 3 },
-    { name: "Geoprogrammierung II", wissen: 320, ects: 3 },
-    { name: "Datenaustausch und Interoperabilität", wissen: 250, ects: 3 },
-    { name: "Projektmanagement I", wissen: 200, ects: 3 },
-    { name: "Profilmodul I", wissen: 430, ects: 6 },
-    { name: "Drohnenvermessung", wissen: 300, ects: 2 },
-    { name: "BIM und digitale Zwillinge", wissen: 290, ects: 2 },
-    { name: "Satellitenbildauswertung", wissen: 340, ects: 2 },
-    { name: "Geodätische Netze", wissen: 310, ects: 2 }
+    { name: "Weltmodelle", wahlpflicht: true, wissen: 360, ects: 5 },
+    { name: "Bilder sehen lernen", wahlpflicht: true, wissen: 380, ects: 4 },
+    { name: "Regeln der digitalen Welt", wahlpflicht: true, wissen: 180, ects: 2 },
+    { name: "Virtuelle Formen", wahlpflicht: true, wissen: 270, ects: 3 },
+    { name: "Programmierte Räume", wahlpflicht: true, wissen: 320, ects: 3 },
+    { name: "Austausch von Ideen", wahlpflicht: true, wissen: 250, ects: 3 },
+    { name: "Projekte bewegen", wahlfach: true, wissen: 200, ects: 3 },
+    { name: "Eigenes Profil", wahlfach: true, wissen: 430, ects: 6 },
+    { name: "Fliegende Perspektiven", wahlfach: true, wissen: 300, ects: 2 },
+    { name: "Digitale Zwillinge", wahlfach: true, wissen: 290, ects: 2 },
+    { name: "Bilder aus der Ferne", wahlfach: true, wissen: 340, ects: 2 },
+    { name: "Netze und Verbindungen", wahlfach: true, wissen: 310, ects: 2 }
   ],
   [
-    { name: "Fernerkundung", pflicht: true, wissen: 430, ects: 4 },
-    { name: "Profilmodul II", pflicht: true, wissen: 620, ects: 9 },
-    { name: "Geomatik-Recht", wissen: 200, ects: 2 },
-    { name: "Neuronale Netze und künstliche Intelligenz", wissen: 520, ects: 3 },
-    { name: "Projektmanagement II", wissen: 300, ects: 4 },
-    { name: "Feldkurs Vertiefungsprofil", wissen: 400, ects: 5 },
-    { name: "Wahlmodul HABG", wissen: 180, ects: 2 },
-    { name: "Wahlmodul Geoinformatik", wissen: 350, ects: 3 },
-    { name: "Zeitreihen und Monitoring", wissen: 390, ects: 2 },
-    { name: "Geodateninfrastrukturen", wissen: 410, ects: 2 },
-    { name: "Angewandte 3D-Visualisierung", wissen: 360, ects: 2 },
-    { name: "Berufspraxis und Portfolio", wissen: 230, ects: 2 }
+    { name: "Fernblick und Nähe", wahlpflicht: true, wissen: 430, ects: 4 },
+    { name: "Vertiefungsprofil", wahlpflicht: true, wissen: 620, ects: 9 },
+    { name: "Gesetze der Zukunft", wahlpflicht: true, wissen: 200, ects: 2 },
+    { name: "Künstliche Gedanken", wahlpflicht: true, wissen: 520, ects: 3 },
+    { name: "Projekte leiten II", wahlpflicht: true, wissen: 300, ects: 4 },
+    { name: "Forschung im Feld", wahlpflicht: true, wissen: 400, ects: 5 },
+    { name: "Freies Forschungsfeld II", wahlfach: true, wissen: 180, ects: 2 },
+    { name: "Digitale Fantasien", wahlfach: true, wissen: 350, ects: 3 },
+    { name: "Zeit und Veränderung", wahlfach: true, wissen: 390, ects: 2 },
+    { name: "Wissensnetzwerke", wahlfach: true, wissen: 410, ects: 2 },
+    { name: "Angewandte Bilder", wahlfach: true, wissen: 360, ects: 2 },
+    { name: "Portfolio der Möglichkeiten", wahlfach: true, wissen: 230, ects: 2 }
   ],
   [
-    { name: "Bachelor-Thesis", pflicht: true, wissen: 900, ects: 12 },
-    { name: "Projektmanagement III", pflicht: true, wissen: 300, ects: 2 },
-    { name: "Profilmodul III", wissen: 700, ects: 6 },
-    { name: "Wahlmodul Geodäsie", wissen: 450, ects: 4 },
-    { name: "Wahlmodul Geoinformatik", wissen: 420, ects: 4 },
-    { name: "Wahlmodul Fernerkundung", wissen: 480, ects: 4 },
-    { name: "Praxisprojekt Geomatik", wissen: 650, ects: 5 },
-    { name: "Abschlusskolloquium", wissen: 560, ects: 3 },
-    { name: "Geodaten-Open-Source-Projekt", wissen: 390, ects: 2 },
-    { name: "Unternehmertum in der Geomatik", wissen: 300, ects: 2 },
-    { name: "Berufseinstieg und Karriere", wissen: 240, ects: 2 },
-    { name: "Wissenschaftliches Publizieren", wissen: 330, ects: 2 }
+    { name: "Die grosse Abschlussidee", wahlpflicht: true, wissen: 900, ects: 12 },
+    { name: "Projekte leiten III", wahlpflicht: true, wissen: 300, ects: 2 },
+    { name: "Eigenes Profil III", wahlpflicht: true, wissen: 700, ects: 6 },
+    { name: "Möglichkeiten gestalten", wahlpflicht: true, wissen: 450, ects: 4 },
+    { name: "Komplexe Fantasien", wahlpflicht: true, wissen: 420, ects: 4 },
+    { name: "Fernblick-Projekt", wahlpflicht: true, wissen: 480, ects: 4 },
+    { name: "Praxisprojekt Zukunft", wahlfach: true, wissen: 650, ects: 5 },
+    { name: "Abschlusskolloquium", wahlfach: true, wissen: 560, ects: 3 },
+    { name: "Offenes Wissensprojekt", wahlfach: true, wissen: 390, ects: 2 },
+    { name: "Unternehmertum und Ideen", wahlfach: true, wissen: 300, ects: 2 },
+    { name: "Start ins Berufsleben", wahlfach: true, wissen: 240, ects: 2 },
+    { name: "Wissen veröffentlichen", wahlfach: true, wissen: 330, ects: 2 }
   ]
 ];
-
-faecherProSemester.forEach(function (faecher) {
-  const niedrigsteFaecher = [...faecher]
-    .sort(function (fachA, fachB) {
-      return fachA.ects - fachB.ects;
-    })
-    .slice(0, 4);
-
-  faecher.forEach(function (fach, index) {
-    delete fach.pflicht;
-    fach.wahlpflicht = !niedrigsteFaecher.includes(fach);
-  });
-});
 
 function formatierteZeit(sekunden) {
   const minuten = Math.floor(sekunden / 60);
@@ -398,8 +385,11 @@ function aktualisierePlanung() {
 
   const gebuehr = aktuelleSemesterGebuehr();
   const fehlendesGeld = Math.max(0, gebuehr - zustand.geld);
+  const wissensziel = zustand.wiederholung
+    ? zustand.pruefungsSchwelle
+    : zustand.pruefungsSchwelle + wissen;
   planungGeld.textContent = `${formatierteZahl(zustand.geld)} CHF`;
-  planungWissen.textContent = wissen;
+  planungWissen.textContent = formatierteZahl(wissensziel);
   planungEcts.textContent = ects;
   planungGebuehr.textContent = `${formatierteZahl(gebuehr)} CHF`;
   semesterStartenKnopf.disabled = ausgewaehlteKarten.length < 6
@@ -417,7 +407,7 @@ function aktualisierePlanung() {
     planungFehlermeldung.textContent = "";
   }
 
-  document.querySelectorAll(".fach-karte:not(:disabled)").forEach(function (karte) {
+  document.querySelectorAll(".fach-karte").forEach(function (karte) {
     karte.disabled = !karte.classList.contains("gewaehlt") && ausgewaehlteKarten.length >= 9;
   });
 }
@@ -536,9 +526,12 @@ function starteSemester() {
   }
 
   zustand.geld -= gebuehr;
-  zustand.pruefungsSchwelle = ausgewaehlteKarten.reduce(function (summe, karte) {
+  const wissenDiesesSemesters = ausgewaehlteKarten.reduce(function (summe, karte) {
     return summe + Number(karte.dataset.wissen);
   }, 0);
+  if (!zustand.wiederholung) {
+    zustand.pruefungsSchwelle += wissenDiesesSemesters;
+  }
   zustand.semesterEcts = ausgewaehlteKarten.reduce(function (summe, karte) {
     return summe + Number(karte.dataset.ects);
   }, 0);
