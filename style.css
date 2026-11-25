@@ -119,12 +119,15 @@ button {
 
 .willkommens-kategorien {
   display: grid;
-  gap: 16px;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .willkommens-kategorie {
-  border-top: 1px solid var(--rand);
-  padding-top: 16px;
+  background: var(--karte-hell);
+  border: 1px solid var(--rand);
+  border-radius: 12px;
+  padding: 14px;
 }
 
 .willkommens-kategorie h2 {
@@ -135,7 +138,7 @@ button {
 .willkommens-stufen {
   display: grid;
   gap: 8px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .willkommens-stufe {
@@ -446,6 +449,10 @@ button {
   order: 3;
 }
 
+.erfolge-bereich {
+  order: 3;
+}
+
 .raum-bereich {
   order: 4;
 }
@@ -590,7 +597,9 @@ h3 {
   width: 0;
 }
 
-.pruefungs-meldung {
+.pruefungs-meldung,
+.ereignis-meldung,
+.semester-aufgabe {
   color: #f5ce7e;
   font-size: 0.9rem;
   font-weight: bold;
@@ -676,7 +685,8 @@ h3 {
 }
 
 .raum-bereich,
-.shop {
+.shop,
+.erfolge-bereich {
   background: var(--karte);
   border: 1px solid var(--rand);
   border-radius: 18px;
@@ -684,8 +694,65 @@ h3 {
   padding: 26px;
 }
 
-.shop {
+.shop,
+.erfolge-bereich {
   margin-top: 24px;
+}
+
+.erfolge-zaehler {
+  color: var(--grau);
+  margin: 0;
+}
+
+.erfolge-karten {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.erfolg-karte {
+  align-items: flex-start;
+  background: var(--karte-hell);
+  border: 1px solid var(--rand);
+  border-radius: 14px;
+  display: flex;
+  gap: 14px;
+  padding: 18px;
+}
+
+.erfolg-karte.freigeschaltet {
+  background: var(--blau-hell);
+  border-color: var(--blau);
+}
+
+.erfolg-karte.gesperrt {
+  opacity: 0.75;
+}
+
+.erfolg-symbol {
+  flex-shrink: 0;
+  font-size: 1.8rem;
+}
+
+.erfolg-karte h3 {
+  margin: 0 0 6px;
+}
+
+.erfolg-karte p {
+  color: var(--grau);
+  margin: 0 0 10px;
+}
+
+.erfolg-status {
+  color: var(--blau);
+  font-size: 0.85rem;
+}
+
+.shop-hinweis {
+  color: var(--grau);
+  line-height: 1.5;
+  margin: 14px 0 0;
 }
 
 .shop-tabs {
@@ -766,6 +833,10 @@ h3 {
 .ausruestungs-karte .artikel-info {
   margin-top: 14px;
   min-height: 62px;
+}
+
+.ausruestungs-karte .artikel-info p + p {
+  margin-top: 8px;
 }
 
 .ausruestungs-karte .kaufen-knopf {
@@ -989,6 +1060,10 @@ h3 {
     padding: 16px;
   }
 
+  .willkommens-kategorien {
+    grid-template-columns: 1fr;
+  }
+
   .startfenster {
     padding: 24px 18px;
   }
@@ -1012,6 +1087,10 @@ h3 {
   }
 
   .fach-karten {
+    grid-template-columns: 1fr;
+  }
+
+  .erfolge-karten {
     grid-template-columns: 1fr;
   }
 

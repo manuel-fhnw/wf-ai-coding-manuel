@@ -11,7 +11,7 @@
     <div class="startfenster">
       <p class="kleiner-text">Willkommensshop</p>
       <h1>Richte deinen Lernort ein</h1>
-      <p class="start-intro">Wähle deine Startausrüstung. Du erhältst auf alle Preise 25 % Rabatt.</p>
+      <p class="start-intro">Wähle PC, Tisch und Lampe als Startausrüstung. Auf diese Auswahl erhältst du 25 % Rabatt. Weitere Ausrüstung kannst du später im Shop kaufen.</p>
 
       <div class="willkommens-summen">
         <div><span>Verfügbares Budget</span><strong id="willkommen-budget">750 CHF</strong></div>
@@ -98,6 +98,19 @@
         <div class="fortschritt" id="fortschritt"></div>
       </div>
       <p class="pruefungs-meldung" id="pruefungs-meldung" aria-live="polite"></p>
+      <p class="ereignis-meldung" id="ereignis-meldung" aria-live="polite"></p>
+      <p class="semester-aufgabe" id="semester-aufgabe"></p>
+    </section>
+
+    <section class="erfolge-bereich" aria-label="Erfolge">
+      <div class="abschnitt-kopf">
+        <div>
+          <p class="kleiner-text">Deine Meilensteine</p>
+          <h2>Erfolge</h2>
+        </div>
+        <p class="erfolge-zaehler" id="erfolge-zaehler">0 von 2 freigeschaltet</p>
+      </div>
+      <div class="erfolge-karten" id="erfolge-karten"></div>
     </section>
 
     <section class="aktion-bereich" aria-label="Aktionen">
@@ -117,7 +130,7 @@
       <div class="abschnitt-kopf">
         <div>
           <p class="kleiner-text">Dein Lernort</p>
-          <h2>Räume</h2>
+          <h2>Lernorte</h2>
         </div>
         <p id="passiv-text" class="passiv-text">+1 Wissen pro Klick · +1 CHF pro Klick</p>
       </div>
@@ -130,13 +143,13 @@
           🔒 Bibliothek
         </button>
         <button class="raum-tab gesperrt" id="tab-lerngruppenraum" role="tab" aria-selected="false" aria-controls="raum-lerngruppenraum" disabled>
-          🔒 Lerngruppen-Raum
+          🔒 Lerngruppe
         </button>
         <button class="raum-tab gesperrt" id="tab-cafe" role="tab" aria-selected="false" aria-controls="raum-cafe" disabled>
-          🔒 Café
+          🔒 Campus-Café
         </button>
         <button class="raum-tab gesperrt" id="tab-hoersaal" role="tab" aria-selected="false" aria-controls="raum-hoersaal" disabled>
-          🔒 Hörsaal
+          🔒 Prüfungsraum
         </button>
       </div>
 
@@ -153,37 +166,37 @@
           <div class="raum-bild bibliothek-bild">📖</div>
           <div class="raum-info">
             <h3>Bibliothek</h3>
-            <p>Viele Bücher und absolute Ruhe helfen dir, dich voll auf dein Studium zu konzentrieren.</p>
-            <span class="ertrag">+20 % Wissen pro Klick</span>
+            <p>Ruhige Einzelarbeitsplätze helfen dir, dich auf schwierige Vorlesungen zu konzentrieren.</p>
+            <span class="ertrag">+15 % Wissen pro Klick</span>
           </div>
-          <button class="kaufen-knopf raum-kaufen" id="bibliothek-kaufen">150 CHF</button>
+          <button class="kaufen-knopf raum-kaufen" id="bibliothek-kaufen">180 CHF</button>
         </article>
         <article class="raum-karte" id="raum-lerngruppenraum" role="tabpanel" aria-labelledby="tab-lerngruppenraum" hidden>
           <div class="raum-bild bibliothek-bild">👥</div>
           <div class="raum-info">
-            <h3>Lerngruppen-Raum</h3>
-            <p>Gemeinsam lernt es sich konzentriert und motiviert.</p>
-            <span class="ertrag">+30 % Wissen pro Klick</span>
+            <h3>Lerngruppe</h3>
+            <p>Erkläre Stoff, löse Aufgaben zusammen und profitiere vom gemeinsamen Lernen.</p>
+            <span class="ertrag">+25 % Wissen pro Klick</span>
           </div>
-          <button class="kaufen-knopf raum-kaufen" id="lerngruppenraum-kaufen">300 CHF</button>
+          <button class="kaufen-knopf raum-kaufen" id="lerngruppenraum-kaufen">350 CHF</button>
         </article>
         <article class="raum-karte" id="raum-cafe" role="tabpanel" aria-labelledby="tab-cafe" hidden>
           <div class="raum-bild wg-bild">☕</div>
           <div class="raum-info">
-            <h3>Café</h3>
-            <p>Ein beliebter Treffpunkt für neue Aufträge.</p>
-            <span class="ertrag">+50 % Geld pro Klick</span>
+            <h3>Campus-Café</h3>
+            <p>Zwischen Lernblöcken übernimmst du kleine Aufträge und verdienst mehr beim Jobben.</p>
+            <span class="ertrag">+30 % CHF pro Klick</span>
           </div>
           <button class="kaufen-knopf raum-kaufen" id="cafe-kaufen">500 CHF</button>
         </article>
         <article class="raum-karte" id="raum-hoersaal" role="tabpanel" aria-labelledby="tab-hoersaal" hidden>
           <div class="raum-bild bibliothek-bild">🎓</div>
           <div class="raum-info">
-            <h3>Hörsaal</h3>
-            <p>Ein grosser Raum für konzentriertes Lernen.</p>
-            <span class="ertrag">+50 % Wissen pro Klick</span>
+            <h3>Prüfungsraum</h3>
+            <p>Trainiere mit Prüfungsaufgaben und festige den Stoff für die nächste Prüfung.</p>
+            <span class="ertrag">+35 % Wissen pro Klick</span>
           </div>
-          <button class="kaufen-knopf raum-kaufen" id="hoersaal-kaufen">800 CHF</button>
+          <button class="kaufen-knopf raum-kaufen" id="hoersaal-kaufen">750 CHF</button>
         </article>
       </div>
     </section>
@@ -195,38 +208,16 @@
           <h2>Shop</h2>
         </div>
       </div>
+      <p class="shop-hinweis">Ausrüstung verbessert deine Werte dauerhaft. Boosts verstärken dein Wissen kurzzeitig; die Musikanlage verlängert ihre Dauer. Es kann nur ein Boost gleichzeitig aktiv sein.</p>
       <div class="shop-tabs" role="tablist" aria-label="Shop-Kategorien">
-        <button class="shop-tab aktiv" id="tab-boosts" role="tab" aria-selected="true" aria-controls="shop-boosts">Boosts</button>
-        <button class="shop-tab" id="tab-equipment" role="tab" aria-selected="false" aria-controls="shop-equipment">Ausrüstung</button>
+        <button class="shop-tab aktiv" id="tab-equipment" role="tab" aria-selected="true" aria-controls="shop-equipment">Ausrüstung</button>
+        <button class="shop-tab" id="tab-boosts" role="tab" aria-selected="false" aria-controls="shop-boosts">Boosts</button>
       </div>
-      <div class="shop-panel" id="shop-boosts" role="tabpanel" aria-labelledby="tab-boosts">
-        <div class="shop-artikel">
-          <div class="artikel-symbol">☕</div>
-          <div class="artikel-info">
-            <h3>Kaffee</h3>
-            <p>×2 Wissen pro Klick für 60 Sekunden.</p>
-          </div>
-          <button class="kaufen-knopf boost-kaufen" data-boost="kaffee">20 CHF</button>
-        </div>
-        <div class="shop-artikel">
-          <div class="artikel-symbol">🥤</div>
-          <div class="artikel-info">
-            <h3>Club-Mate</h3>
-            <p>×5 Wissen pro Klick für 120 Sekunden.</p>
-          </div>
-          <button class="kaufen-knopf boost-kaufen" data-boost="clubMate">50 CHF</button>
-        </div>
-        <div class="shop-artikel">
-          <div class="artikel-symbol">⚡</div>
-          <div class="artikel-info">
-            <h3>Energy Drink</h3>
-            <p>×10 Wissen pro Klick für 180 Sekunden.</p>
-          </div>
-          <button class="kaufen-knopf boost-kaufen" data-boost="energyDrink">100 CHF</button>
-        </div>
+      <div class="shop-panel" id="shop-boosts" role="tabpanel" aria-labelledby="tab-boosts" hidden>
+        <div id="boost-karten"></div>
         <p class="boost-countdown" id="boost-countdown" aria-live="polite"></p>
       </div>
-      <div class="shop-panel" id="shop-equipment" role="tabpanel" aria-labelledby="tab-equipment" hidden>
+      <div class="shop-panel" id="shop-equipment" role="tabpanel" aria-labelledby="tab-equipment">
         <div class="ausruestungs-karten" id="ausruestungs-karten"></div>
       </div>
       <p class="meldung" id="meldung" aria-live="polite"></p>
